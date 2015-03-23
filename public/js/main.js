@@ -6,13 +6,14 @@ $(function() {
     // Replace this line with the one on your Quickstart Guide Page
  Parse.initialize("7MZs4simq83LcSZBqNsFBaGGIfLlczt1dnRA5AC8", "JNBnWNCXkRNpc1v0xgZdwAWbiFlUpBcIP70BzMnK");
  var currentUser = Parse.User.current();
+ var pathArray=window.location.pathname.split( '/' );
  if(currentUser){
-  if(window.location=='http://alt13.parseapp.com/login.html'){
+  if(pathArray[pathArray.length-1]=='./login.html'){
     window.location.assign('main.html');
   }
   $("#userSlot").text(currentUser.attributes.username);
  }else{
-  if(window.location!='http://alt13.parseapp.com/login.html'){
+  if(pathArray[pathArray.length-1]!='login.html'){
     window.location.assign('login.html');
   }
  }
