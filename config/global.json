@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Alt13": {
+            "applicationId": "7MZs4simq83LcSZBqNsFBaGGIfLlczt1dnRA5AC8", 
+            "masterKey": "MdMTCiM2xHuogGAtTG5VwWEQVSGupMjfnliT1u0C"
+        }, 
+        "_default": {
+            "link": "Alt13"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
