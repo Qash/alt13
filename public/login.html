@@ -8,7 +8,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/alt13.css">
+		<link rel="stylesheet" href="css/login.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -17,6 +17,20 @@
 		<![endif]-->
 	</head>
 	<body>
+	<header>
+
+			<div class="menu-trigger"><img src="media/logo.png" alt="logo" class="logo"/></i></div>
+		</header>
+		<div id="slogan"> 
+			<h1>Marchez, decouvrez, ecoutez</h1> 
+			<p>Alt-13 est une application mobile permettant, grâce à la géolocalisation, de découvrir de nouvelles musiques en fonction du lieu où vous vous trouvez. Les musiques viendront à vous lorsque vous vous promenerez à travers Paris.</p>
+		</div>
+		<div id="logo">
+			<img src="media/fb.png" alt="logo" class="fb"/>
+			<img src="media/tw.png" alt="logo" class="tw"/>
+			<img src="media/google.png" alt="logo" class="ggle"/>
+		</div>
+		<div id="formulaire">
 		<form id="logForm" method="POST" role="form">
 			<legend>Connexion</legend>
 			<div class="alert alert-danger">
@@ -27,7 +41,7 @@
 				<input type="password" class="form-control" id="pwdField" placeholder="Password">
 			</div>
 			<button class="btn btn-primary">Submit</button>
-			<a href="javascript:void(0)" onclick="refreshForm(false)">Pas encore inscrit ?</a>
+			<a href="javascript:void(0)" onclick="refreshForm(false)" class="inscrit">Pas encore inscrit ?</a>
 		</form>
 		<form id="signForm" method="POST" role="form">
 			<legend>Inscription</legend>
@@ -40,8 +54,9 @@
 				<input type="password" class="form-control" id="pwdField" placeholder="Password">
 			</div>
 			<button class="btn btn-primary">Submit</button>
-			<a href="javascript:void(0)" onclick="refreshForm(true)">Déjà inscrit ?</a>
+			<a href="javascript:void(0)" onclick="refreshForm(true)" class="inscrit">Déjà inscrit ?</a>
 		</form>
+		</div>
 		<!-- jQuery -->
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
