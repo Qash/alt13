@@ -5,7 +5,7 @@ var curPL=0;
 
 function initPlayer(){
 	DZ.init({
-		appId  : '8',
+		appId  : '150381',
 		channelUrl : 'http://developers.deezer.com/examples/channel.php',
 		player : {
 			onload : onPlayerLoaded

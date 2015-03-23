@@ -23,7 +23,7 @@ body {
 }
 
 header{
-	background-color: #00616E;
+	background-color: #00636D;
 	height: 50px;
 	width: 100%;
 	color:#E6E7E8;
@@ -65,6 +65,7 @@ legend{
 }
 
 .logo{
+
 	height: 40px;
 	width: 40px;
 	margin-left : 5px;
@@ -128,16 +129,26 @@ a{
 }
 
 button.btn{
+	box-shadow: inherit;
 	background-color: #00636D;
 	border:none;
 	font-family: 'ralewaybold';
 	display: inline;
 	color:#E6E7E8;
+	-webkit-tap-highlight-color:rgb(70,70,70);
 }
-
+button.btn:hover{
+	color:white;
+}
 button.btn.btn-less{
 	background-color: transparent;
 }
+button.btn.btn-less:hover{
+	color:#00636D;
+	box-shadow: inherit;
+	text-shadow: 2px 2px 8px #E6E7E8;
+}
+
 .btn-grp{
 	text-align: center;
 	margin-bottom: 5px;
@@ -148,4 +159,11 @@ button.btn.btn-less{
 	border-radius: inherit;
 	padding: 3px;
 	margin-bottom: 3px;
+	font-size: 1em;
+}
+
+.modal{
+	text-align: center;
+	font-size: 'ralewaybold';
+	text-transform: uppercase;
 }

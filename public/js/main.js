@@ -50,8 +50,8 @@ $('#logForm').on('submit', function(e) {
                 window.location.assign('main.html');
             },
             error:function(user, error) {
-                $('.alert-danger').show();
-                $('.alert-danger').text(error.message);
+                $('#modal1').text(error.message);
+                $('#modal1').openModal();
             }
         });
 });
@@ -72,8 +72,8 @@ user.signUp(null, {
     window.location.assign('main.html');
   },
   error: function(user, error) {
-    $('.alert-danger').show();
-    $('.alert-danger').text(error.message);
+    $('#modal2').text(error.message);
+    $('#modal2').openModal();
   }
 });
 });

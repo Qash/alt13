@@ -78,3 +78,8 @@ nav ul li.favorite:before { content: '\f004'; }
 		nav ul li.premium:before { content: '\f005'; }
 		nav ul li.filter-off:before { content: '\f096'; }
 		nav ul li.filter-on:before { content: '\f005'; }
+
+		#map-canvas{
+			width: 100%;
+			height: 300px;
+		}
