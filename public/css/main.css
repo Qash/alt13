@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'ralewaybold';
+    src: url('font/raleway-bold-webfont.eot');
+    src: url('font/raleway-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/raleway-bold-webfont.woff2') format('woff2'),
+         url('font/raleway-bold-webfont.woff') format('woff'),
+         url('font/raleway-bold-webfont.ttf') format('truetype'),
+         url('font/raleway-bold-webfont.svg#ralewaybold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #E6E7E8;
+}
+
+
+/*#404041
+#00636D*/
+ul#slide-out-menu.side-nav.fixed,ul#slide-out-filter.side-nav.fixed{
+	background-color:#404041;
+	
+}
+nav{
+	background-color:#00636D;
+}
+ul#slide-out-menu.side-nav.fixed li:hover,ul#slide-out-filter.side-nav.fixed li:hover { 
+	background-color: #00636D; 
+}
+ul#slide-out-menu.side-nav.fixed li a,ul#slide-out-filter.side-nav.fixed li a{
+	color:#E6E7E8;
+	font-family: 'ralewaybold';
+	font-size: 1.5em;
+	text-decoration: none;
+	display: inline;
+}
+ header, main, footer {
+    padding-left: 240px;
+  }
+
+  @media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+  }
+
+nav.filter{
+	position: absolute;
+	top: 0;
+}
+
+a.button-collapse.filter{float:right;}
+nav ul li:before {
+			font-family: "FontAwesome";
+			font-style: normal;
+			font-weight: normal;
+			color:#E6E7E8;
+			speak: none;
+			display: inline-block;
+			text-decoration: inherit;
+			width: 1em;
+			margin-right: 12px;
+			text-align: center;
+			font-variant: normal;
+			font-size: 1.5em;
+			text-transform: none;
+			line-height: 1em;
+		}
+nav ul li.favorite:before { content: '\f004'; }
+		nav ul li.logout:before { content: '\f007'; }
+		nav ul li.shows:before { content: '\f130'; }
+		nav ul li.playlists:before { content: '\f03a'; }
+		nav ul li.settings:before { content: '\f013'; }
+		nav ul li.about:before { content: '\f128'; }
+		nav ul li.premium:before { content: '\f005'; }
+		nav ul li.filter-off:before { content: '\f096'; }
+		nav ul li.filter-on:before { content: '\f005'; }

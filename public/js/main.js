@@ -17,26 +17,22 @@ $(function() {
     window.location.assign('login.html');
   }
  }
-  
-});
-function signUp(){
-  var user = new Parse.User();
-  user.set("username", $());
-  user.set("password", "my pass");
-  user.set("email", "email@example.com");
-
-  // other fields can be set just like with Parse.Object
-
-  user.signUp(null, {
-    success: function(user) {
-        // Hooray! Let them use the app now.
-    },
-    error: function(user, error) {
-        // Show the error message somewhere and let the user try again.
-        alert("Error: " + error.code + " " + error.message);
+    // Initialize collapse button
+  $('.button-collapse.menu').sideNav({
+      menuWidth: 240, // Default is 240
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
     }
-  });
-}
+  );
+  $('.button-collapse.filter').sideNav({
+      menuWidth: 240, // Default is 240
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    }
+  );
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+});
 
 $('#logForm').on('submit', function(e) {
  
