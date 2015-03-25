@@ -22,13 +22,15 @@ body {
 #00636D*/
 ul#slide-out-menu.side-nav.fixed,ul#slide-out-filter.side-nav.fixed{
 	background-color:#404041;
-	
+	overflow:scroll;
 }
 nav{
 	background-color:#00636D;
 }
+
 ul#slide-out-menu.side-nav.fixed li:hover,ul#slide-out-filter.side-nav.fixed li:hover { 
 	background-color: #00636D; 
+	
 }
 ul#slide-out-menu.side-nav.fixed li a,ul#slide-out-filter.side-nav.fixed li a{
 	color:#E6E7E8;
@@ -36,6 +38,7 @@ ul#slide-out-menu.side-nav.fixed li a,ul#slide-out-filter.side-nav.fixed li a{
 	font-size: 1.5em;
 	text-decoration: none;
 	display: inline;
+	
 }
  header, main, footer {
     padding-left: 240px;
