@@ -21,25 +21,22 @@ function initPlayer(){
 });
 }
 
-function linkPosTrack(){
-	if(curLat==latPL1 && curLong==longPL1 && curPL!=PL1){
-		$("#boutonPlayPse").attr('disabled', false);
-		DZ.player.playPlaylist(PL1);
-		curPL=PL1;
-		return false;
-	}
-	else if(curLat==latPL2 && curLong==longPL2 && curPL!=PL2){
-		$("#boutonPlayPse").attr('disabled', false);
-		DZ.player.playPlaylist(PL2);
-		curPL=PL2;
-		return false;
-	}
-	else if(curPL!=PLdefault && curPL!=PL1 && curPL!=PL2){
-		$("#boutonPlayPse").attr('disabled', false);
-		DZ.player.playPlaylist(PLdefault);
-		curPL=PLdefault;
-		return false;
-	}
+function linkPosTrack(lat,long){
+	// User's location
+	var userGeoPoint =new Parse.GeoPoint(lat, long);
+	// Create a query for places
+	var query = new Parse.Query("Salles");
+	// Interested in locations near user.
+	query.withinKilometers("geoLoc",userGeoPoint,500);
+	// Limit what could be a lot of points.
+	query.limit(3);
+	// Final list of objects
+	query.find({
+	  success: function(placesObjects) {
+		console.log(placesObjects[1].get("name"));
+		sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
+	  }
+	});
 }
 
 function playPause(){

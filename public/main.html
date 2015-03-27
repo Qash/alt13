@@ -9,26 +9,16 @@
 			<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 	<script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
-	<script src="js/deezerJS.js"></script>
-	<script src="js/geolocation.js"></script>
-
 	<script type="text/javascript">
-	var centreCarte = new google.maps.LatLng(48.913912, 2.418886);
-	var maCarte; 
-	function initialisation(){
-		var optionsCarte = {
-			mapTypeControl : false,
-			zoom: 15,
-			center: centreCarte,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			streetViewControl: false,
-			panControl : false
-		}
-		maCarte = new google.maps.Map(document.getElementById("map-canvas"), optionsCarte);
-	}
-	google.maps.event.addDomListener(window, 'load', initialisation);
+	
+	
 
 	</script>
+	<script src="js/geolocation.js"></script>
+	<script src="js/deezerJS.js"></script>
+	
+
+	
 
 	<!-- Bootstrap CSS -->
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -59,15 +49,15 @@
 			<nav class='filter'>
 				<ul id="slide-out-filter" class="side-nav fixed">
 					<li id="rock" class="filter-off"><a href="javascript:document.getElementById('rock').setAttribute('class','filter-on');">Rock</a></li>
-					<li class="filter-off"><a href="">Rap</a></li>
-					<li class="filter-off"><a href="">Blues</a></li>
-					<li class="filter-off"><a href="">R'n'B</a></li>
-					<li class="filter-off"><a href="">Electro</a></li>
-					<li class="filter-off"><a href="">Country</a></li>
-					<li class="filter-off"><a href="">Jazz</a></li>
-					<li class="filter-off"><a href="">Classique</a></li>
-					<li class="filter-off"><a href="">Pop</a></li>
-					<li class="filter-off"><a href="">Reggae</a></li>
+					<li id="rap" class="filter-off"><a href="javascript:document.getElementById('rap').setAttribute('class','filter-on');">Rap</a></li>
+					<li id="blues" class="filter-off"><a href="javascript:document.getElementById('blues').setAttribute('class','filter-on');">Blues</a></li>
+					<li id="rnb" class="filter-off"><a href="javascript:document.getElementById('rnb').setAttribute('class','filter-on');">R'n'B</a></li>
+					<li id="electro" class="filter-off"><a href="javascript:document.getElementById('electro').setAttribute('class','filter-on');">Electro</a></li>
+					<li id="country" class="filter-off"><a href="javascript:document.getElementById('country').setAttribute('class','filter-on');">Country</a></li>
+					<li id="jazz" class="filter-off"><a href="javascript:document.getElementById('jazz').setAttribute('class','filter-on');">Jazz</a></li>
+					<li id="classique" class="filter-off"><a href="javascript:document.getElementById('classique').setAttribute('class','filter-on');">Classique</a></li>
+					<li id="pop" class="filter-off"><a href="javascript:document.getElementById('pop').setAttribute('class','filter-on');">Pop</a></li>
+					<li id="reggae" class="filter-off"><a href="javascript:document.getElementById('reggae').setAttribute('class','filter-on');">Reggae</a></li>
 				</ul>
 				<a href="#" data-activates="slide-out-filter" class="button-collapse show-on-large filter"><i class="mdi-navigation-menu"></i></a>
 			</nav>

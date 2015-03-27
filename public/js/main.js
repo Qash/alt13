@@ -1,3 +1,4 @@
+var currentUser;
 $(function() {
     Parse.$ = jQuery;
  $('.alert-danger').hide();
@@ -5,7 +6,7 @@ $(function() {
  refreshForm(form);
     // Replace this line with the one on your Quickstart Guide Page
  Parse.initialize("7MZs4simq83LcSZBqNsFBaGGIfLlczt1dnRA5AC8", "JNBnWNCXkRNpc1v0xgZdwAWbiFlUpBcIP70BzMnK");
- var currentUser = Parse.User.current();
+ currentUser = Parse.User.current();
  var pathArray=window.location.pathname.split( '/' );
  if(currentUser){
   if(pathArray[pathArray.length-1]=='./login.html'){
