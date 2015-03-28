@@ -62,7 +62,7 @@ nav.filter{
 	top: 0;
 }
 
-a.button-collapse.filter{float:right;
+a.button-collapse.filter{float:right; margin-right: 5px;
 }
 nav a.button-collapse i{
 	line-height: 12vh;
@@ -109,7 +109,7 @@ nav ul li.favorite:before { content: '\f004'; }
 		#controllers{
 			text-align: center;
 		}
-		#controllers input{
+		#controllers button{
 			background-color: rgba(40,40,41,0.8);
 			margin: auto;
 			color:#E6E7E8;
@@ -129,6 +129,7 @@ nav ul li.favorite:before { content: '\f004'; }
 			color:#E6E7E8;
 			padding:0 10px 0;
 			height: 15vh;
+			font-family: 'ralewaybold'
 		}
 		#choses h1{
 			font-size: 1.5em;
@@ -150,4 +151,17 @@ nav ul li.favorite:before { content: '\f004'; }
 		}
 		#icones i:hover{
 			color: #00636D;
+		}
+
+		#titre{
+			position: fixed;
+			top:0;
+			width: 100%;
+			z-index: 1;
+			color: #E6E7E8;
+			margin: 0;
+			line-height: 12vh;
+			text-align: center;
+			font-size: 2em;
+			font-family: 'ralewaybold';
 		}
