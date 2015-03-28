@@ -11,15 +11,49 @@ var img_url;
 var centreCarte = new google.maps.LatLng(48.913912, 2.418886);
 var maCarte; 
 function initialisation(){
-	var optionsCarte = {
-		mapTypeControl : false,
-		zoom: 15,
-		center: centreCarte,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		streetViewControl: false,
-		panControl : true
-	};
-	maCarte = new google.maps.Map(document.getElementById("map-canvas"), optionsCarte);
+	var styles = [
+	{
+		stylers: [
+		{ hue: "#00ffe6" },
+		{ saturation: -20 }
+		]
+	},{
+		featureType: "road",
+		elementType: "geometry",
+		stylers: [
+		{ lightness: 100 },
+		{ visibility: "simplified" }
+		]
+	},{
+		featureType: "road",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		]
+	}
+	];
+
+  // Create a new StyledMapType object, passing it the array of styles,
+  // as well as the name to be displayed on the map type control.
+  var styledMap = new google.maps.StyledMapType(styles,
+  	{name: "Styled Map"});
+
+  var optionsCarte = {
+  	mapTypeControl : false,
+  	zoom: 18,
+  	center: centreCarte,
+  	mapTypeId: google.maps.MapTypeId.ROADMAP,
+  	streetViewControl: false,
+  	panControl : true,
+  	mapTypeControlOptions: {
+  		mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+  	}
+  };
+
+  maCarte = new google.maps.Map(document.getElementById("map-canvas"), optionsCarte);
+  maCarte.mapTypes.set('map_style', styledMap);
+  maCarte.setMapTypeId('map_style');
+
 }
 google.maps.event.addDomListener(window, 'load', initialisation);
 

@@ -34,7 +34,8 @@ function linkPosTrack(lat,long){
 	query.find({
 		success: function(placesObjects) {
 			console.log(placesObjects[1].get("name"));
-			sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
+			//sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
+			sallePos=new google.maps.LatLng(48.884197,2.331998);
 		}
 	});
 }

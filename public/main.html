@@ -7,7 +7,7 @@
 	<title>Alt 13</title>
 	<!-- jQuery -->
 	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	<script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
 	<script type="text/javascript">
 	
@@ -59,26 +59,36 @@
 					<li id="pop" class="filter-off"><a href="javascript:document.getElementById('pop').setAttribute('class','filter-on');">Pop</a></li>
 					<li id="reggae" class="filter-off"><a href="javascript:document.getElementById('reggae').setAttribute('class','filter-on');">Reggae</a></li>
 				</ul>
-				<a href="#" data-activates="slide-out-filter" class="button-collapse show-on-large filter"><i class="mdi-navigation-menu"></i></a>
+				<a href="#" data-activates="slide-out-filter" class="button-collapse show-on-large filter"><i class="glyphicon glyphicon-filter"></i></a>
 			</nav>
 			<main>
 				<div id="map-canvas"></div>
-				<div id="playerPart">
+				<div id="icones">
+					<i class="fa fa-heart fa-lg"></i>
+					<i class="fa fa-home fa-lg"></i>
+					<i class="fa fa-ticket fa-lg"></i>
+				</div>
+				
+				<div id="choses">
+					<h1>Fucking Karen & The Frogs</h1>
+					<h2>Light Out</h2>
+				</div>
+			</main>
+			<footer>
+			<div id="playerPart">
 					<div id="dz-root"></div>
 					<div id="slider_seek" class="progressbarplay" style="">
 						<div class="bar" style="width: 0%;"></div>
 					</div>
-					<div id="controlers">
-						<input class='boutonMin' type="button" onclick="toLowerVolume(); return false;" value="-"/>
+					<div id="controllers">
+						
 						<input class='boutonMin' type="button" onclick="DZ.player.prev(); return false;" value="&#9668;&#9668;"/>
-						<input id='boutonPlayPse' type="button" onclick="playPause(); return false;" value="&#9646;&#9646;" disabled>
+						<input id='boutonPlayPse' type="button" onclick="playPause(); return false;" value="&#9658;" disabled>
 						<input class='boutonMin' type="button" onclick="DZ.player.next(); return false;" value="&#9658;&#9658;"/>
-						<input class='boutonMin' type="button" onclick="toUpperVolume(); return false;" value="+"/>
+						
 					</div>
 				</div>
-				<pre id="event_listener" style="height:80px;overflow:auto;"></pre>
-			</main>
-
+			</footer>
 			
 			<!-- Bootstrap JavaScript -->
 			<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

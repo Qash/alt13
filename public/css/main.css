@@ -16,7 +16,9 @@ body {
 	padding: 0;
 	background-color: #E6E7E8;
 }
-
+nav{
+	height: 12vh;
+}
 ::-webkit-scrollbar { 
     display: none; 
 }
@@ -60,7 +62,13 @@ nav.filter{
 	top: 0;
 }
 
-a.button-collapse.filter{float:right;}
+a.button-collapse.filter{float:right;
+}
+nav a.button-collapse i{
+	line-height: 12vh;
+}
+a.button-collapse.filter i{font-size: 2em;
+}
 nav ul li:before {
 			font-family: "FontAwesome";
 			font-style: normal;
@@ -89,9 +97,57 @@ nav ul li.favorite:before { content: '\f004'; }
 
 		#map-canvas{
 			width: 100%;
-			height: 300px;
+			height: 70vh;
+		}
+		#playerPart{
+			position: fixed;
+			bottom: 4vh;
+			width: 70%;
+			left:50%;
+			margin-left: -35%;
+		}
+		#controllers{
+			text-align: center;
+		}
+		#controllers input{
+			background-color: rgba(40,40,41,0.8);
+			margin: auto;
+			color:#E6E7E8;
+			border:none;
+			padding: 5px;
+			font-size: 2em;
+			height: 10vh;
+			width: 2.5em;
+			margin: 0 5px 0;
 		}
 
-		#controllers input{
-			background-color: #404041;
+		#choses{
+			position: fixed;
+			bottom: 18vh;
+			background-color: rgba(40,40,41,0.8);
+			width: 100%;
+			color:#E6E7E8;
+			padding:0 10px 0;
+			height: 15vh;
+		}
+		#choses h1{
+			font-size: 1.5em;
+			line-height: 2em;
+			vertical-align: top;
+			margin: 0;
+		}
+		#choses h2{
+			font-size: 1em;
+			line-height: 1em;
+			margin-top: 0;
+		}
+		#icones{
+			color: rgba(40,40,41,0.8);
+			font-size: 2em;
+			position: fixed;
+			right: 10px;
+			bottom:35vh;
+		}
+		#icones i:hover{
+			color: #00636D;
 		}
