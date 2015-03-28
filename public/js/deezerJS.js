@@ -12,13 +12,13 @@ function initPlayer(){
 		}
 	});
 	$(document).ready(function(){
-	$("#controlers input").attr('disabled', true);
-	$("#slider_seek").click(function(evt,arg){
-		var left = evt.offsetX;
-		console.log(evt.offsetX, $(this).width(), evt.offsetX/$(this).width());
-		DZ.player.seek((evt.offsetX/$(this).width()) * 100);
+		$("#controlers input").attr('disabled', true);
+		$("#slider_seek").click(function(evt,arg){
+			var left = evt.offsetX;
+			console.log(evt.offsetX, $(this).width(), evt.offsetX/$(this).width());
+			DZ.player.seek((evt.offsetX/$(this).width()) * 100);
+		});
 	});
-});
 }
 
 function linkPosTrack(lat,long){
@@ -32,10 +32,10 @@ function linkPosTrack(lat,long){
 	query.limit(3);
 	// Final list of objects
 	query.find({
-	  success: function(placesObjects) {
-		console.log(placesObjects[1].get("name"));
-		sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
-	  }
+		success: function(placesObjects) {
+			console.log(placesObjects[1].get("name"));
+			sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
+		}
 	});
 }
 
@@ -64,20 +64,20 @@ function toUpperVolume(){
 
 
 function event_listener_append() {
-		var pre = document.getElementById('event_listener');
-		var line = [];
-		for (var i = 0; i < arguments.length; i++) {
-			line.push(arguments[i]);
-		}
-		pre.innerHTML += line.join(' ') + "\n";
+	var pre = document.getElementById('event_listener');
+	var line = [];
+	for (var i = 0; i < arguments.length; i++) {
+		line.push(arguments[i]);
 	}
+	pre.innerHTML += line.join(' ') + "\n";
+}
 
 function onPlayerLoaded() {
 	$("#controlers input").attr('disabled', false);
 	$("#boutonPlayPse").attr('disabled', true);
 	DZ.Event.subscribe('current_track', function(arg){
-			event_listener_append('current_track', arg.index, arg.track.title, arg.track.album.title);
-		});
+		event_listener_append('current_track', arg.index, arg.track.title, arg.track.album.title);
+	});
 	DZ.Event.subscribe('player_position', function(arg){
 		$("#slider_seek").find('.bar').css('width', (100*arg[0]/arg[1]) + '%');
 	});
