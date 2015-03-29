@@ -75,20 +75,17 @@
 				
 				<div id="trackInfo">
 					<h1><i class="fa fa-headphones"></i> <span id="artistName">Fuckin' Karen & The Frogs</span></h1>
-					<span><h2>Light Out</h2></span>
+					<span id="trackName"><h2>Light Out</h2></span>
 				</div>
 			</main>
 			<footer>
 			<div id="playerPart">
 					<div id="dz-root"></div>
-					<div id="slider_seek" class="progressbarplay" style="">
-						<div class="bar" style="width: 0%;"></div>
-					</div>
 					<div id="controllers">
 						
-						<button class='boutonMin' onclick="DZ.player.prev(); return false;"><i class="fa fa-backward fa-lg"></i></button>
-						<button class='boutonPlayPse' onclick="playPause(); return false;"><i class="fa fa-play fa-lg"></i></button>
-						<button class='boutonMin' onclick="DZ.player.next(); return false;"><i class="fa fa-forward fa-lg"></i></button>
+						<button class='boutonMin' onclick="prev();"><i class="fa fa-backward fa-lg"></i></button>
+						<button class='boutonPlayPse' onclick="playPause();"><i class="fa fa-play fa-lg"></i></button>
+						<button class='boutonMin' onclick="next();"><i class="fa fa-forward fa-lg"></i></button>
 					</div>
 				</div>
 			</footer>

@@ -2,7 +2,10 @@ var PL1=274156841;
 var PL2=301775;
 var PLdefault=1117340461;
 var curPL=0;
-
+var nextSongs = new Array();
+var prevSongs = new Array();
+var curSong;
+var running=0;
 function initPlayer(){
 	DZ.init({
 		appId  : '150381',
@@ -11,17 +14,12 @@ function initPlayer(){
 			onload : onPlayerLoaded
 		}
 	});
-	$(document).ready(function(){
-		$("#controlers input").attr('disabled', true);
-		$("#slider_seek").click(function(evt,arg){
-			var left = evt.offsetX;
-			console.log(evt.offsetX, $(this).width(), evt.offsetX/$(this).width());
-			DZ.player.seek((evt.offsetX/$(this).width()) * 100);
-		});
-	});
+
+	 
 }
 
 function linkPosTrack(lat,long){
+
 	// User's location
 	var userGeoPoint =new Parse.GeoPoint(lat, long);
 	// Create a query for places
@@ -29,72 +27,90 @@ function linkPosTrack(lat,long){
 	// Interested in locations near user.
 	query.withinKilometers("geoLoc",userGeoPoint,500);
 	// Limit what could be a lot of points.
-	query.limit(3);
+	query.limit(50);
 	// Final list of objects
 	query.find({
 		success: function(placesObjects) {
-			console.log(placesObjects[1].get("name"));
+			nextSongs=[];
+			console.log(placesObjects);
 			for (var i = 0; i < placesObjects.length; i++) {
-				placesObjects[i]
-			};
-			//sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
-			sallePos=new google.maps.LatLng(48.884197,2.331998);
+				query=new Parse.Query("progAVenir");
+				var pos=new google.maps.LatLng(placesObjects[i].get("geoLoc").latitude,placesObjects[i].get("geoLoc").longitude);
+				query.equalTo("salle",placesObjects[i].get('name'));
+				query.find({
+					success: function(artistInPlace){
+						for (var j = 0; j < artistInPlace.length; j++) {
+							addToQueue(artistInPlace[j].get('idart'),pos);
+						}
+					}
+				})
+			}
+			
 		}
 	});
+	
 }
 
 function playPause(){
-	if (document.getElementById("boutonPlayPse").value=="\u25AE\u25AE") {
-		DZ.player.pause();
-		document.getElementById("boutonPlayPse").value="\u25BA";
-	}
-	else{
-		DZ.player.play();
-		document.getElementById("boutonPlayPse").value="\u25AE\u25AE";
-	}
-}
-function toLowerVolume(){
-	var curVol=DZ.player.getVolume();
-	if (curVol>0)
-		DZ.player.setVolume(curVol-2);
+	if(running)
+	console.log("%cPlay %s", "color:orange; background:blue; font-size: 16pt",curSong.title);
 }
 
-function toUpperVolume(){
-	var curVol=DZ.player.getVolume();
-	if (curVol<100)
-		DZ.player.setVolume(curVol+2);
+function next(){
+	if(curSong)
+		prevSongs.unshift(curSong);
+	if(nextSongs[0])
+	curSong=nextSongs[0];
+	nextSongs.shift();
+	updateInfo();
+	DZ.player.playTracks([curSong.id]);
+	console.log("%cNEXT %s", "color:orange; background:blue; font-size: 16pt",curSong.title);
 }
 
-
-
-function event_listener_append() {
-	var pre = document.getElementById('event_listener');
-	var line = [];
-	for (var i = 0; i < arguments.length; i++) {
-		line.push(arguments[i]);
-	}
-	pre.innerHTML += line.join(' ') + "\n";
+function prev(){
+	nextSongs.unshift(curSong);
+	curSong=prevSongs[0];
+	sallePos=curSong.position;
+	prevSongs.shift();
+	updateInfo();
+	DZ.player.playTracks([curSong.id]);
+	console.log("%cPREV %s", "color:orange; background:blue; font-size: 16pt",curSong.title);
 }
 
 function onPlayerLoaded() {
-	$("#controlers input").attr('disabled', false);
-	$("#boutonPlayPse").attr('disabled', true);
-	DZ.Event.subscribe('current_track', function(arg){
-		event_listener_append('current_track', arg.index, arg.track.title, arg.track.album.title);
-	});
-	DZ.Event.subscribe('player_position', function(arg){
-		$("#slider_seek").find('.bar').css('width', (100*arg[0]/arg[1]) + '%');
-	});
+	DZ.Event.subscribe('track_end', function(num, evt_name){
+	 	next();
+	 });
 }
 
-var xmlhttp = new XMLHttpRequest();
 
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var myArr = JSON.parse(xmlhttp.responseText);
-        console.log(myArr)
+function addToQueue(idartist,posSalle){
+	DZ.api('/artist/'+idartist+'/top', function(json){
+
+				for (var i = 0; i < json.data.length; i++) {
+					for (var j = 0; j < json.data[i].contributors.length; j++) {
+						delete json.data[i].contributors[j].share;
+						json.data[i].position=posSalle;
+					}
+					if((!contain(json.data[i],nextSongs)&&!contain(json.data[i],prevSongs))&&!((JSON.stringify(curSong) === JSON.stringify(json.data[i]))))
+						nextSongs.push(json.data[i]);
+				}
+			});
+}
+
+function contain(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (JSON.stringify(obj) === JSON.stringify(list[i])) {
+            return true;
+        }
     }
-}
-xmlhttp.open("GET", "http://api.deezer.com/artist/27/top", true);
-xmlhttp.send();
 
+    return false;
+}
+
+function updateInfo(){
+	$("#artistName").text(curSong.artist.name);
+	$("#trackName h2").text(curSong.title);
+	sallePos=curSong.position;
+}
