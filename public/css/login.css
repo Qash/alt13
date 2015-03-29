@@ -135,6 +135,7 @@ button.btn{
 	font-family: 'ralewaybold';
 	display: inline;
 	color:#E6E7E8;
+	padding:6px;
 	-webkit-tap-highlight-color:rgb(70,70,70);
 }
 button.btn:hover{

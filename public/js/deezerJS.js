@@ -34,6 +34,9 @@ function linkPosTrack(lat,long){
 	query.find({
 		success: function(placesObjects) {
 			console.log(placesObjects[1].get("name"));
+			for (var i = 0; i < placesObjects.length; i++) {
+				placesObjects[i]
+			};
 			//sallePos=new google.maps.LatLng(placesObjects[1].get("geoLoc").latitude,placesObjects[1].get("geoLoc").longitude);
 			sallePos=new google.maps.LatLng(48.884197,2.331998);
 		}
@@ -83,3 +86,15 @@ function onPlayerLoaded() {
 		$("#slider_seek").find('.bar').css('width', (100*arg[0]/arg[1]) + '%');
 	});
 }
+
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        console.log(myArr)
+    }
+}
+xmlhttp.open("GET", "http://api.deezer.com/artist/27/top", true);
+xmlhttp.send();
+
