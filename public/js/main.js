@@ -1,5 +1,6 @@
 var currentUser;
 $(function() {
+
   Parse.$ = jQuery;
   $('.alert-danger').hide();
   var form=true;
@@ -12,7 +13,13 @@ $(function() {
       if(pathArray[pathArray.length-1]=='./login.html'){
         window.location.assign('main.html');
       }
-      $("#userSlot").text(currentUser.attributes.username);
+      // Init filtres
+      var elts=document.getElementById("slide-out-filter").getElementsByTagName("a");
+      for (var i = 0; i < elts.length; i++) {
+        if(elts[i].parentElement.className=="filter-on"){
+          filters.push(elts[i].textContent);
+        } 
+      }
     }else{
       if(pathArray[pathArray.length-1]!='login.html'){
         window.location.assign('login.html');
